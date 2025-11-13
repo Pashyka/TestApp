@@ -8,30 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var imageColor: Color = .orange
+    @State private var message = "I am a programmer!"
 
     var body: some View {
         VStack {
-            Text("That is Football to You?")
-                .foregroundStyle(.green)
-                .fontWeight(.thin)
+            Image(systemName: "swift")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.orange)
+            Text(message)
+                .foregroundStyle(.red)
+                .fontWeight(.heavy)
                 .font(.largeTitle)
-            HStack {
-                Image(systemName: "figure.american.football")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.blue)
-                Image(systemName: "figure.australian.football")
-                    .resizable()
-                    .foregroundStyle(.indigo)
-                    .scaledToFit()
-                Image(systemName: "figure.soccer")
-                    .resizable()
-                    .foregroundStyle(.purple)
-                    .scaledToFit()
+            Button("Click me!") {
+                message = "Hello!"
             }
-            
-
         }
     }
 }
