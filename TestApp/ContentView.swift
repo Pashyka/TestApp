@@ -22,7 +22,7 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
-                .frame(width: 300, height: 300)
+                .frame(width: 350, height: 350)
                 .shadow(radius: 30)
             Text(messages[currentIndex])
                 .font(.title)
