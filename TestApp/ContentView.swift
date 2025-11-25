@@ -1,39 +1,38 @@
-//
-//  ContentView.swift
-//  TestApp
-//
-//  Created by Павел on 13.11.2025.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    @State private var text = ""
-    @State private var image = ""
+    // Сообщения и изображения должны совпадать по количеству
+    private let messages = [
+        "Некифор и чуваки",
+        "Какой-то чувак",
+        "Кто это?"
+    ]
+    private let images = [
+        "image0",
+        "image1",
+        "image2"
+    ]
+    
+    @State private var currentIndex = 0
     
     var body: some View {
-        VStack{
+        VStack {
             Spacer()
-            Image(image)
+            Image(images[currentIndex])
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
-                .frame(width: 350, height: 350)
-                .shadow(radius: 10)
-            Text(text)
+                .frame(width: 300, height: 300)
+                .shadow(radius: 30)
+            Text(messages[currentIndex])
                 .font(.title)
                 .fontWeight(.black)
                 .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
             Spacer()
-            HStack {
-                Button("Click Me") {
-                    let message1 = "Какой-то чувак"
-                    let message2 = "Невъебические парни"
-                    let image1 = "Pashtet"
-                    let image2 = "Vse"
-                    text = (text == message1 ? message2 : message1)
-                    image = (image == image1 ? image2 : image1)
-                }
+            Button("Click Me") {
+                // Безопасный переход к следующему элементу
+                currentIndex = (currentIndex + 1) % min(messages.count, images.count)
             }
             .buttonStyle(.glass)
             .tint(.purple)
